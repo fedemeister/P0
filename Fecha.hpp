@@ -7,8 +7,20 @@
 
 
 class Fecha {
+public:
+    explicit Fecha(int dia=0, int mes=0, int anyo=0);   // explicit para evitar las conversiones implicitas
+    explicit Fecha(const char*);
 
+    int getDia() const;
+
+    int getMes() const;
+
+    int getAnyo() const;
+
+private:
+    int dia,mes,anyo;
 };
 
 
 #endif //P0_FECHA_H
+
