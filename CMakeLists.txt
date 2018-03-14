@@ -3,4 +3,4 @@ project(P0)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(P0 main.cpp Cadena.cpp Cadena.h cmake-build-debug/Fecha.cpp cmake-build-debug/Fecha.h)
+add_executable(P0 main.cpp Cadena.cpp Cadena.hpp Fecha.cpp Fecha.hpp)
