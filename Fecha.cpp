@@ -2,15 +2,22 @@
 // Created by fedemeister on 14/03/18.
 //
 
+#include <cstdio>
+#include <ctime>
 #include "Fecha.hpp"
 
-Fecha::Fecha(int dia, int mes, int anyo) {
+Fecha::Fecha(int dia, int mes, int anyo) : dia(dia), mes(mes), anyo(anyo) {
 
 }
 
 // A partir de una cadena de caracteres de bajo nivel en el formato "dd/mm/aaaa"
-Fecha::Fecha(const char *) {
-
+Fecha::Fecha(const char *cad_fecha) {
+    int valida = sscanf(cad_fecha, "%d/%d/%d", &dia, &mes,
+                        &anyo);//Parte la cadena y se almacena en cada variable corresp
+    if (3 != valida)
+        throw (Invalida("La fecha esta mal"));
+    else
+        *this = Fecha(dia, mes, anyo);
 }
 
 

@@ -10,7 +10,14 @@ class Fecha {
 public:
     explicit Fecha(int dia=0, int mes=0, int anyo=0);   // explicit para evitar las conversiones implicitas
     explicit Fecha(const char*);
-
+    class Invalida
+    {
+    public:
+        Invalida(const char*);
+        const char* por_que() const;
+    private:
+        const char* error_;
+    };
     int getDia() const;
 
     int getMes() const;
