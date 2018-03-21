@@ -13,10 +13,16 @@ public:
     class Invalida
     {
     public:
-        Invalida(const char*);
-        const char* por_que() const;
+        explicit Invalida(const char*) {
+
+        }
+
+        const char* por_que() const {
+            return nullptr;
+        }
+
     private:
-        const char* error_;
+        const char* error_{};
     };
     int getDia() const;
 
