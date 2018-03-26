@@ -5,35 +5,59 @@
 #ifndef P0_FECHA_H
 #define P0_FECHA_H
 
+#include <iostream>
+#include <algorithm>
 
 class Fecha {
 public:
-    explicit Fecha(int dia=0, int mes=0, int anyo=0);   // explicit para evitar las conversiones implicitas
-    explicit Fecha(const char*);
-    class Invalida
-    {
+    explicit Fecha(int dia = 0, int mes = 0, int anyo = 0);   // explicit para evitar las conversiones implicitas
+    explicit Fecha(const char *);
+
+    static const int AnnoMaximo = 2037;
+    static const int AnnoMinimo = 1902;
+
+
+    class Invalida {
     public:
-        explicit Invalida(const char*) {
+        explicit Invalida(const char *error) : error_(error) {}
 
-        }
-
-        const char* por_que() const {
-            return nullptr;
+        const char *por_que() const {
+            return error_;
         }
 
     private:
-        const char* error_{};
+        const char *error_{};
     };
-    int getDia() const;
 
-    int getMes() const;
 
-    int getAnyo() const;
+    bool esBisiesto(int anyo) const;
+
+    int getDay() const;
+
+    int getMonth() const;
+
+    int getYear() const;
+
+    Fecha& operator +=(int numDias);
+    Fecha& operator -=(int numDias);
+    Fecha& operator ++();
+    Fecha& operator --();
+    Fecha operator ++(int numDias);
+    Fecha operator --(int numDias);
+    Fecha operator +(int numDias) const;
+    Fecha operator -(int numDias) const;
 
 private:
-    int dia,mes,anyo;
+    int day_, month_, year_;
+
+    void fechaValida() const;
 };
 
+bool operator ==(const Fecha& fecha1, const Fecha& fecha2);
+bool operator !=(const Fecha& fecha1, const Fecha& fecha2);
+bool operator >(const Fecha& fecha1, const Fecha& fecha2);
+bool operator <(const Fecha& fecha1, const Fecha& fecha2);
+bool operator >=(const Fecha& fecha1, const Fecha& fecha2);
+bool operator <=(const Fecha& fecha1, const Fecha& fecha2);
 
 #endif //P0_FECHA_H
-

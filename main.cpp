@@ -1,6 +1,7 @@
 #include <iostream>
+#include "Fecha.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    try { Fecha t("29/02/2018"); }
+    catch(Fecha::Invalida &e) { std::cerr << e.por_que() << std::endl; }
 }
